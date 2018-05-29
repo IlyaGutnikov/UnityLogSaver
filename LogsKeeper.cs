@@ -7,5 +7,10 @@ namespace IlyaGutnikov.LogSaver
     public class LogsKeeper
     {
         public List<Log> Logs;
+
+        public LogsKeeper()
+        {
+            Logs = new List<Log>();
+        }
     }
 }
