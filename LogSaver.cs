@@ -92,9 +92,15 @@ namespace IlyaGutnikov.LogSaver
             string jsonLogs = JsonUtility.ToJson(_logsKeeper, true);
             
             var path = Path.Combine(Application.persistentDataPath, "Logs");
-            path = Path.Combine(path, "Log_" + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz") + ".txt");
+            path = Path.Combine(path, "Log_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".txt");
 
             var dirPath = Path.GetDirectoryName(path);
+
+            if (string.IsNullOrEmpty(dirPath))
+            {
+                Debug.LogError("Can't get directory path for file: " + path);
+                return;
+            }
 
             if (!Directory.Exists(dirPath))
             {
